@@ -1,65 +1,59 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
-
+import Head from 'next/head';
+import { useRouter } from 'next/router'
+import NavBar from '../Components/Navbar';
+import Button from 'react-bootstrap/Button';
+import styles from '../styles/Home.module.scss';
+import SvgBackground from '../Components/SvgBackground';
+import Footer from '../Components/Footer';
 export default function Home() {
+  const router = useRouter()
+  const goToOnboarding = () => {
+    router.push("/onboarding")
+  }
+
   return (
     <div className={styles.container}>
       <Head>
         <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel='icon' href='/favicon.ico' />
+        <link rel='preconnect' href='https://fonts.gstatic.com' />
+        <link
+          href='https://fonts.googleapis.com/css2?family=Manrope:wght@400;800&display=swap'
+          rel='stylesheet'
+        />
       </Head>
+      
+      <NavBar />
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+      <SvgBackground bottomStripes={true} bigCircle={true}/>
+       <div className="d-flex justify-content-evenly mx-2">
+         <div  className="d-flex flex-column justify-content-center">
+        <div className='d-flex align-items-end'> 
+          <h1 className={styles.superSize}>Jetzt wird gekocht</h1>
         </div>
+        <p>
+          Zusammen erstellen wir deinen Ernährungsplan und planen deinen
+          Wocheinkauf, damit du mehr Zeit für die wichtigen Dinge hast.
+        </p>
+        <small>Ein Projekt von Lukas Sonnabend</small>
+        <div className='d-flex align-items-baseline justify-content-center'>
+          <Button variant='primary' size='lg' onClick={goToOnboarding}>
+            Los geht's
+          </Button>
+        </div>
+        </div>
+        <div className="d-none d-md-block">
+          <img src="/iPhoneX.png"/>
+        </div>
+        </div>
+
+
+      
+      
       </main>
 
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
+     <Footer/>
     </div>
-  )
+  );
 }

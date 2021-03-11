@@ -4,13 +4,63 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
+  min-height: 100vh;
+  max-width: 100vw;
+  }
+
+  #__next {
+    min-height: 100vh;
+    max-width: 100vw;
+    overflow: hidden;
+  }
 
 a {
   color: inherit;
   text-decoration: none;
 }
 
+p {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 400;
+}
+
 * {
   box-sizing: border-box;
+}
+
+.vw100 {
+  width: 100%;
+  max-width: 100vw;
+}
+
+main {
+  min-height: calc(100vh - 80px);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+svg {
+  width: 100%;
+}
+
+.bg-tuerkis {
+  background: #75E3EA;
+}
+
+.justify-content-evenly {
+  justify-content: space-evenly;
+}
+
+#__next > div > nav > div > a > svg{
+    width: auto;
+  }
+
+
+.dayCell {
+  border-right: 1px solid black;
+}
+
+.modeWrapper, .calendarHeader {
+  background: transparent;
 }

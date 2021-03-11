@@ -1,0 +1,98 @@
+.bgDiv {
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    div {
+      position: relative;
+      height: 100%;
+      width: 100%;
+    }
+    svg {
+      position: absolute;
+      width: auto;
+      opacity: 0.6;
+      &:nth-child(1){
+        left: 0;
+        right: 0;
+        bottom: 0;
+      }
+      &:nth-child(2){
+        left: -71px;
+        right: 0;
+        opacity: 0.4;
+        bottom: -72px;
+      }
+      &:nth-child(3){
+        left: 840px;
+        right: 0;
+        opacity: 0.4;
+        bottom: 106px;
+      }
+      &:nth-child(4){
+        left: 1260px;
+        right: 0;
+        opacity: 0.4;
+        bottom: 159px;
+      }
+      &:nth-child(5){
+        left: 912px;
+        right: 0;
+        opacity: 0.4;
+        bottom: 51px;
+      }
+      &:nth-child(6){
+        left: 1332px;
+        right: 0;
+        opacity: 0.4;
+        bottom: 105px;
+      }
+      &:nth-child(7){
+        left: 1680px;
+        opacity: 0.4;
+        bottom: 211px;
+      }
+      &:nth-child(8){
+        left: 1752px;
+        opacity: 0.4;
+        bottom: 157px;
+      }
+    }
+
+
+.bigCircle {
+    z-index: -1;
+    position: absolute;
+    border-radius: 50%;
+    width: 740px;
+    height: 740px;
+    opacity: 0.4;
+    background: #8C30F5;
+    top: -250px;
+    right: -600px;
+  }
+  
+  
+  .littleCircle {
+    z-index: -1;
+    position: absolute;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    opacity: 0.7;
+    &.one {
+      background: #FFC278;
+      top: calc(50% - 50px);
+      left: calc(50% - 50px);
+    }
+    &.two {
+      background: #75E3EA;
+      bottom: 20%;
+      left: 10%;
+    }
+  }
+  
+
+  }

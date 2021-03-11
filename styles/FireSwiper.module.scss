@@ -1,0 +1,131 @@
+.swiperSection {
+  height: 400px;
+  width: 100vw;
+  position: relative;
+}
+
+.swiperObjectWrapper {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.EndCard {
+  z-index: -1;
+  opacity: 5;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  width: 300px;
+  height: 400px;
+  
+  h3 {
+    position: absolute;
+    text-align: center;
+    bottom: 0;
+    font-weight: bold;
+    color: black;
+    width: 100%;
+  }
+  svg{
+    justify-self: center;
+    width: 250px;
+  }
+}
+
+.swiperObject {
+  opacity: 5;
+  position: relative;
+  transition: opacity 1s;
+  z-index: 2;
+  .card {
+    background-size: cover;
+    background-position-x: center;
+    height: 100%;
+  }
+  h3 {
+    z-index: 1;
+    position: absolute;
+    bottom: 0;
+    font-weight: bold;
+    color: white;
+    width: 100%;
+    &.active {
+      z-index: 1;
+    }
+  }
+
+  position: absolute;
+  width: 300px;
+  height: 400px;
+}
+
+.swiperCircle {
+  width: 376px;
+  height: 387px;
+  border-radius: 100%;
+  position: absolute;
+  z-index: 2;
+  &.Yes {
+    top: 0;
+    display: flex;
+    text-align: left;
+    right: -320px;
+    background-color: #67d25e;
+    p {
+      height: 20px;
+      justify-content: center;
+      align-self: center;
+    }
+  }
+  &.No {
+    justify-content: flex-end;
+    display: flex;
+    left: -320px;
+    background-color: #ff5151;
+
+    p {
+      height: 20px;
+      justify-content: center;
+      align-self: center;
+    }
+  }
+}
+
+
+.bottomBand {
+  position: absolute;
+  bottom: 0;
+  opacity: 0.8;
+  overflow: hidden;
+  svg {
+    margin-bottom: -100px;
+  }
+}
+
+
+
+
+.redoWrapper {
+  cursor: pointer;
+  z-index: 2;
+  position: absolute;
+  display: flex;
+  bottom: 0;
+  justify-content: center;
+  width: 100%;
+  line-height: 13px;
+}
+
+
+@media (min-width: 992px) {
+  .swiperSection {
+    height: 400px;
+    width: 50%;
+    position: relative;
+  }
+  
+}
