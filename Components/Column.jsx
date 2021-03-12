@@ -1,6 +1,5 @@
-import Button from 'react-bootstrap/Button';
 import styles from '../styles/Column.module.scss';
-
+import RecipeCard from '../Components/RecipeCard'
 export default function Column(props) {
 
 const strike = (e) => {
@@ -9,7 +8,7 @@ const strike = (e) => {
 }
   if (props.shoppingList)
     return (
-      <div className={styles.singleColumn}>
+      <div className={styles.singleColumn + ( props.hiddenMobile ? " d-none d-lg-flex" : "")}>
         <p className={styles.title + ' text-center'}>{props.title}</p>
         {props.data.map((card) => (
           <div className={styles.cardWrapper + " " + styles.shoppingList + ' d-flex flex-column'}>
@@ -29,18 +28,7 @@ const strike = (e) => {
   return (
     <div className={styles.singleColumn + " " + props.className}>
       <p className={styles.title + ' text-center'}>{props.title}</p>
-      {props.data.map((card) => (
-        <div className={styles.cardWrapper + ' d-flex position-relative'}>
-          <img src={card.img} />
-          {props.refreshable && <span className={styles.swapButton}>🔀</span>}
-          <div className='d-flex h-100 flex-column flex-grow-1 justify-content-around'>
-            <p className='m-0 font-weight-bold'>{card.title}</p>
-            <p className='m-0'>{card.description}</p>
-            {card.buttonLink && (
-              <Button className='align-self-center'>Rezept</Button>
-            )}
-          </div>
-        </div>
+      {props.data.map((card) => ( <RecipeCard refreshable={props.refreshable} card={card}/>
       ))}
     </div>
   );

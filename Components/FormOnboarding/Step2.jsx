@@ -72,7 +72,6 @@ export default function StepTwo(props) {
       </div>
       </div>
       <div className='position-relative'>
-          <SvgBand extraClass='d-lg-none' color='#75E3EA' />
           <div className={styles.buttonBox + ' d-flex w-100 text-sm-center'}>
             <Button
               type='submit'
