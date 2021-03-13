@@ -15,6 +15,8 @@ import {
 } from 'react-icons/gr';
 import Footer from '../Components/Footer';
 import Column from '../Components/Column';
+import useSWR from 'swr'
+const fetcher = (...args) => fetch(...args).then((response) => response.json())
 
 export default function Dashboard() {
   const [activeTab, setActiveTab] = useState(0);
@@ -27,41 +29,10 @@ export default function Dashboard() {
     { title: 'Einstellungen', icon: <GrSettingsOption /> },
   ];
 
+  const { data, error } = useSWR('/api/shoppinglist', fetcher)
+  if (error) return <div>failed to load</div>
+  if (!data) return <div>loading...</div>
 
-  let shoppingLst = [
-    {
-      title: 'Fisch & Fleisch',
-      items: [
-        { name: 'Hackfleisch', qnty: '200g' },
-        { name: 'Rinder Beinscheibe', qnty: '300g' },
-        { name: 'Kabeljau Filet', qnty: '300g' },
-      ],
-    },
-    {
-      title: 'Beilagen',
-      items: [
-        { name: 'Kartoffeln', qnty: '600g' },
-        { name: 'Spaghetti', qnty: '300g' },
-        { name: 'Reis', qnty: '250g' },
-      ],
-    },
-    {
-      titel: 'Obst & Gemüse',
-      items: [
-        { name: 'Tomaten', qnty: '5 Stück' },
-        { name: 'Gurke', qnty: '1 Stück' },
-        { name: 'Äpfel', qnty: '2 Stück' },
-        { name: 'Bananen', qnty: '2 Stück' },
-      ],
-    },
-    {
-      titel: 'Sonstiges',
-      items: [
-        { name: 'Mehl', qnty: '500g' },
-        { name: 'Haferflocken', qnty: '200g' },
-      ],
-    },
-  ];
 
   return (
     <div className={styles.container + ' w-100'}>
@@ -98,7 +69,7 @@ export default function Dashboard() {
             {/* RightSide  */}
               {activeTab == 0 && <Overview />}
               {activeTab == 1 && <Calendar />}
-              {activeTab == 2 && <ShoppingListElement data={shoppingLst}  />}
+              {activeTab == 2 && <ShoppingListElement data={data.shoppingList}  />}
         </div>
       </main>
       <Footer />

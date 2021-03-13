@@ -1,7 +1,16 @@
 import Column from './Column';
 import styles from '../styles/Column.module.scss';
-export default function OverView() {
-  let data = [
+import useSWR from 'swr'
+
+const fetcher = (...args) => fetch(...args).then((response) => response.json())
+
+export default function OverView(props) {
+
+  const { data, error } = useSWR('/api/shoppinglist', fetcher)
+  if (error) return <div>failed to load</div>
+  if (!data) return <div>loading...</div>
+
+  let mockApi = [
     {
       title: 'Frühstück',
       img:
@@ -67,41 +76,6 @@ export default function OverView() {
     },
   ];
 
-  let shoppingLst = [
-    {
-      title: 'Fisch & Fleisch',
-      items: [
-        { name: 'Hackfleisch', qnty: '200g' },
-        { name: 'Rinder Beinscheibe', qnty: '300g' },
-        { name: 'Kabeljau Filet', qnty: '300g' },
-      ],
-    },
-    {
-      title: 'Beilagen',
-      items: [
-        { name: 'Kartoffeln', qnty: '600g' },
-        { name: 'Spaghetti', qnty: '300g' },
-        { name: 'Reis', qnty: '250g' },
-      ],
-    },
-    {
-      titel: 'Obst & Gemüse',
-      items: [
-        { name: 'Tomaten', qnty: '5 Stück' },
-        { name: 'Gurke', qnty: '1 Stück' },
-        { name: 'Äpfel', qnty: '2 Stück' },
-        { name: 'Bananen', qnty: '2 Stück' },
-      ],
-    },
-    {
-      titel: 'Sonstiges',
-      items: [
-        { name: 'Mehl', qnty: '500g' },
-        { name: 'Haferflocken', qnty: '200g' },
-      ],
-    },
-  ];
-
   function getNumberOfWeek() {
     const today = new Date();
     const firstDayOfYear = new Date(today.getFullYear(), 0, 1);
@@ -110,14 +84,14 @@ export default function OverView() {
   }
 
   return (
-    <div>
+    <div className="flex-grow-1">
       <h2 className='font-weight-bold text-center'>
         Dein Essensplan für die Kalenderwoche {getNumberOfWeek()}
       </h2>
       <div className={styles.columnsWrapper + ' d-flex flex-grow-1'}>
-        <Column data={data} title='Das gibts heute' />
-        <Column data={data} refreshable title='Der Plan für Morgen' />
-        <Column data={shoppingLst} shoppingList hiddenMobile title='Wocheneinkaufsliste' />
+        <Column data={mockApi} title='Das gibts heute' />
+        <Column data={mockApi} refreshable title='Der Plan für Morgen' />
+        <Column data={data.shoppingList} shoppingList hiddenMobile title='Wocheneinkaufsliste' />
       </div>
     </div>
   );
